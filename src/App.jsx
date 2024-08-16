@@ -4,6 +4,7 @@ function App() {
   return (
     <div className="App">
       <Data texto="data e hora atuais: " ></Data>
+      <h1>ola</h1>
     </div>
   );
 }
