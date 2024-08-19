@@ -5,19 +5,30 @@ export default class Data extends Component{
     constructor (props) {
         super();
         this.props = props;
-        this.data = new Date().toLocaleString();
+        this.state = {
+                        data : new Date().toLocaleString()
+                     }
+    }
+
+    pegaDataDe(timeZone){
+        
     }
 
     //Após montar
     componentDidMount(){
         console.log("O componente foi montado.");
-        this.data = new Date().toLocaleString();
+        this.setState({
+            data: new Date().toLocaleString()
+        })
 
     }
 
     //Após atualizar
     componentDidUpdate(){
         console.log("O componente foi atualizado");
+        setTimeout(()=>{this.setState({
+            data : new Date().toLocaleString()
+        })},1000)
         
     }
 
@@ -30,7 +41,7 @@ export default class Data extends Component{
     //Inicialização
     render(){
         return(
-            <h1>{this.props.texto ? this.props.texto + this.data : ""} </h1>
+            <h1>{this.props.texto ? this.props.texto + this.state.data : ""} </h1>
         )
     }
 }
