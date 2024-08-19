@@ -5,11 +5,14 @@ export default class Data extends Component{
     constructor (props) {
         super();
         this.props = props;
+        this.data = new Date().toLocaleString();
     }
 
     //Após montar
     componentDidMount(){
         console.log("O componente foi montado.");
+        this.data = new Date().toLocaleString();
+
     }
 
     //Após atualizar
@@ -27,7 +30,7 @@ export default class Data extends Component{
     //Inicialização
     render(){
         return(
-            <h1>{this.props.texto ? this.props.texto : ""}</h1>
+            <h1>{this.props.texto ? this.props.texto + this.data : ""} </h1>
         )
     }
 }
