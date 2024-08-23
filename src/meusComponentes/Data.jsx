@@ -11,7 +11,12 @@ export default class Data extends Component{
     }
 
     pegaDataDe(timeZone){
-        
+        const dataAtual = new Date();
+        let timeZoneFromDB = parseInt(timeZone);
+        let diferencaTempo = timeZoneFromDB * 60 + dataAtual.getTimezoneOffset();
+        let milisegundos = parseInt(dataAtual.getTime() + (diferencaTempo* 60 * 1000));
+        const data = new Date(milisegundos);
+        return data;
     }
 
     //Após montar
@@ -27,7 +32,7 @@ export default class Data extends Component{
     componentDidUpdate(){
         console.log("O componente foi atualizado");
         setTimeout(()=>{this.setState({
-            data : new Date().toLocaleString()
+            data : this.pegaDataDe(this.props.timeZone).toLocaleString()
         })},1000)
         
     }
@@ -37,6 +42,7 @@ export default class Data extends Component{
         console.log("O componente foi desmontado");
         
     }
+
 
     //Inicialização
     render(){
